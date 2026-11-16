@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="+@id/menu_review"
+            android:icon="@drawable/ic_baseline_view_24"
+            android:orderInCategory="2"
+            android:title="Your Account"
+            app:showAsAction="ifRoom|withText"
+            />
+
+        <item
+            android:id="+@id/menu_logout"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:orderInCategory="3"
+            android:title="Logout"
+            app:showAsAction="ifRoom|withText" />
+    </group>
+</menu>
