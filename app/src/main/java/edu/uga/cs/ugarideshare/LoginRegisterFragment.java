@@ -2,18 +2,20 @@ package edu.uga.cs.ugarideshare;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link LoginRegisterFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginRegisterFragment extends Fragment {
+public class LoginRegisterFragment extends Fragment implements LoginDialogFragment.LoginDialogListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +23,9 @@ public class LoginRegisterFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
+
+    private Button loginButton;
+    private Button registerButton;
     private String mParam1;
     private String mParam2;
 
@@ -60,5 +65,36 @@ public class LoginRegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login_register, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        loginButton = view.findViewById(R.id.loginButton);
+        registerButton = view.findViewById(R.id.registerButton);
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: Add login functionality
+                LoginDialogFragment newFragment = new LoginDialogFragment();
+                newFragment.setHostFragment(LoginRegisterFragment.this);
+                newFragment.show(getParentFragmentManager(), null);
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: Add register functionality
+
+            }
+        });
+    }
+
+    @Override
+    public void login(String username, String password) {
+        //TODO: Implement database/page navigation features here
     }
 }
