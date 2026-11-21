@@ -15,11 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LoginDialogFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class LoginDialogFragment extends DialogFragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -34,8 +30,9 @@ public class LoginDialogFragment extends DialogFragment {
 
     private LoginRegisterFragment hostFragment;
 
-    public interface LoginDialogListener {
+    public interface DialogListener {
         void login(String username, String password);
+        void register(String username, String password);
     }
 
     /**

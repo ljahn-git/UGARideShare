@@ -1,5 +1,6 @@
 package edu.uga.cs.ugarideshare;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,7 @@ import android.widget.Button;
  * Use the {@link LoginRegisterFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginRegisterFragment extends Fragment implements LoginDialogFragment.LoginDialogListener{
+public class LoginRegisterFragment extends Fragment implements LoginDialogFragment.DialogListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -88,13 +89,23 @@ public class LoginRegisterFragment extends Fragment implements LoginDialogFragme
             @Override
             public void onClick(View v) {
                 //TODO: Add register functionality
-
+                RegisterDialogFragment newFragment = new RegisterDialogFragment();
+                newFragment.setHostFragment(LoginRegisterFragment.this);
+                newFragment.show(getParentFragmentManager(), null);
             }
         });
     }
 
     @Override
     public void login(String username, String password) {
+        //TODO: Implement database/page navigation features here
+
+        Intent intent = new Intent(getContext(), HomeActivity.class);
+        getContext().startActivity(intent); //uhoh
+    }
+
+    @Override
+    public void register(String username, String password) {
         //TODO: Implement database/page navigation features here
     }
 }
