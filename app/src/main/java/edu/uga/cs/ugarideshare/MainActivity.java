@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private RideShareDatabase rideShareDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        rideShareDatabase = new RideShareDatabase(this);
+        rideShareDatabase.getWritableDatabase();
+
         // test test
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (rideShareDatabase != null) {
+            rideShareDatabase.close();
+        }
+        super.onDestroy();
     }
 }
