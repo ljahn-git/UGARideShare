@@ -75,4 +75,8 @@ public class ListOffersRequestsFragment extends Fragment {
         //TODO: retrieve data based on value of offers and pass data (along with offers) to CardRecyclerAdapter object
         //Also, the constructor for offers takes a String and the one for requests takes an integer because I'm too far down this rabbit hole to make actually good code
     }
+
+    public void saveNewRideOffer(String startingPoint, String endingPoint, String date) {
+
+    }
 }
