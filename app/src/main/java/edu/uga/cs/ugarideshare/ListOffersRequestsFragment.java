@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +28,11 @@ public class ListOffersRequestsFragment extends Fragment {
     // TODO: Rename and change types of parameters
 
     private RecyclerView recyclerView;
-    private CardRecyclerAdapter cardRecyclerAdapter;
+    private OfferRecyclerAdapter offerRecyclerAdapter;
+    private RequestRecyclerAdapter requestRecyclerAdapter;
+
+    private List<RideShareData.Request> requestList;
+    private List<RideShareData.Offer> offerList;
 
     private int offers;
 
@@ -73,7 +79,14 @@ public class ListOffersRequestsFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         //TODO: retrieve data based on value of offers and pass data (along with offers) to CardRecyclerAdapter object
-        //Also, the constructor for offers takes a String and the one for requests takes an integer because I'm too far down this rabbit hole to make actually good code
+
+        if (offers == 0) {
+            requestRecyclerAdapter = new RequestRecyclerAdapter(requireContext(), requestList);
+            recyclerView.setAdapter(requestRecyclerAdapter);
+        } else {
+            offerRecyclerAdapter = new OfferRecyclerAdapter(requireContext(), offerList);
+            recyclerView.setAdapter(offerRecyclerAdapter);
+        }
     }
 
     public void saveNewRideOffer(String startingPoint, String endingPoint, String date) {

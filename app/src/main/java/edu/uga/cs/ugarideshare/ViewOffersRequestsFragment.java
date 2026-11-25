@@ -28,7 +28,7 @@ public class ViewOffersRequestsFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
 
-    private final String[] tabTitles = new String[] {"Requests", "Offers"};
+    private final String[] tabTitles = new String[] {"Offers", "Requests"};
 
     ViewPager2 viewPager;
     TabLayout tabLayout;
@@ -96,13 +96,20 @@ public class ViewOffersRequestsFragment extends Fragment {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-            switch (position) {
-                case 0:
-                    return new LoginRegisterFragment();
-                case 1:
-                    return new LoginRegisterFragment();
-            }
-            return new LoginRegisterFragment();
+            //Bundle bundle = new Bundle();
+//            switch (position) {
+//                case 0:
+//
+//                    return myFragment;
+//                case 1:
+//                    return myFragment;
+//            }
+//            return new LoginRegisterFragment();
+//            bundle.putInt("offers", position);
+//            ListOffersRequestsFragment myFragment = new ListOffersRequestsFragment();
+//            myFragment.setArguments(bundle);
+
+            return ListOffersRequestsFragment.newInstance(position);
         }
 
         @Override
